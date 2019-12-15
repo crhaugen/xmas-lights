@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Wifi Led Strip </title>
+<title> xmas lights </title>
 <meta name="viewpoint" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" /> <meta name="apple-mobile-web-app-title" content="Wifi Led" /> <meta name="apple-mobile-web-app-capable" content="yes" />  
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='Style.css') }}">
 </head> <body>
-    <table class="Colours" cellspacing="10" border="0">
+
+
+    <table class="Colors" cellspacing="10" border="0">
+        h1 XMAS LIGHTS!!
         <tr>
-            <td onClick="SendColour('colorWipe')" class="button" value="colorWipe" style="background-color: rgb(255,136,0);"></td>
-            <td onClick="SendColour('theaterChase')" class="button" value="theaterChase" style="background-color: red;"></td>
+            <td onClick="SendColour('colorWipe')" class="button.btn.third" >xmas Color Wipe</td>
+            <td onClick="SendColour('theaterChase')" class="button.btn.third">Theater Chase</td>
         </tr>
         <tr>
             <td onClick="SendColour('wheel')" class="2ndrow button" style="background-color: green;"></td>
-            <td onClick="SendColour('rainbow')" class="2ndrow button" value="rainbow" style="background-color: lightblue;"></td>
+            <td onClick="SendColour('rainbow')" class="2ndrow button" value="rainbow" style="background-color: lightblue;">Rainbow</td>
         </tr>
         <tr>
             <td onClick="SendColour('rainbowCycle')" class="3rdrow button" style="background-color: darkblue;"></td>
