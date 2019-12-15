@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+    .Colors {
+	width: 100%; 
+}
+
+h1 {
+    color: #e74c3c;
+	font-size: 4rem;
+	text-transform: uppercase;
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.button {
+	padding: 25px 35px;
+	border-radius: 4px;
+}
+
+</style>
 <title> xmas lights </title>
 <meta name="viewpoint" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" /> <meta name="apple-mobile-web-app-title" content="Wifi Led" /> <meta name="apple-mobile-web-app-capable" content="yes" />  
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='Style.css') }}">
@@ -10,7 +30,7 @@
     <table class="Colors" cellspacing="10" border="0">
         <h1>XMAS LIGHTS!</h1>
         <tr>
-            <td onClick="SendColour('colorWipe')" class="button" >xmas Color Wipe</td>
+            <td onClick="SendColour('colorWipe')" class="button" >XMAS color Wipe</td>
             <td onClick="SendColour('theaterChase')" class="button">Theater Chase</td>
         </tr>
         <tr>
@@ -31,6 +51,8 @@
         </tr>
         
         </tr>
+
+        <td onClick="SendColour('OFF')" class="button" >Turn Lights Off</td>
         
     </table>
 <script>
