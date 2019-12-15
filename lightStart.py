@@ -87,20 +87,20 @@ def Main():
     if request.args.get('Colour'):
        CurrentColour=request.args.get('Colour')
     
-    if CurrentColour == "Orange":
+    if CurrentColour == "colorWipe":
 
         print ('Color wipe animations.')
         colorWipe(strip, Color(255, 0, 0))  # Red wipe
         colorWipe(strip, Color(0, 255, 0))  # Blue wipe
         colorWipe(strip, Color(0, 0, 255))  # Green wipe
 
-    elif CurrentColour == "White":
+    elif CurrentColour == "theaterChase":
         print ('Theater chase animations.')
         theaterChase(strip, Color(127, 127, 127))  # White theater chase
         theaterChase(strip, Color(127,   0,   0))  # Red theater chase
         theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 
-    elif CurrentColour == "Red":
+    elif CurrentColour == "rainbow":
         print ('Rainbow animations.')
         rainbow(strip)
         rainbowCycle(strip)
