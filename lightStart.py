@@ -77,28 +77,31 @@ def theaterChaseRainbow(strip, wait_ms=50):
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i+q, 0)
 
-@app.route('/', methods=['POST'])
+
 def light():
     global CurrentColour
     strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     strip.begin()
 
-    if request.form['led']:
-       CurrentColour=request.form['led']
+    if request.args.get('Color'):
+       CurrentColour=request.args.get('Color')
     print('here', CurrentColour)
     if CurrentColour == "colorWipe":
+       while request.args.get('Color') == 'colorWipe':
            print ('Color wipe animations.')
            colorWipe(strip, Color(255, 0, 0))  # Red wipe
            colorWipe(strip, Color(0, 255, 0))  # Blue wipe
            colorWipe(strip, Color(0, 0, 255))  # Green wipe
 
     elif CurrentColour == "theaterChase":
+        while True:
             print ('Theater chase animations.')
             theaterChase(strip, Color(127, 127, 127))  # White theater chase
             theaterChase(strip, Color(127,   0,   0))  # Red theater chase
             theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 
     elif CurrentColour == "rainbow":
+        while True:
             print ('Rainbow animations.')
             rainbow(strip)
             rainbowCycle(strip)
@@ -113,6 +116,7 @@ def light():
 
 @app.route('/', methods=['GET'])
 def Main():
+    light()
     return render_template('homePage.html')
 
 

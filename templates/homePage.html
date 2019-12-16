@@ -29,32 +29,31 @@ h1 {
 
     <table class="Colors" cellspacing="10" border="0">
         <h1>XMAS LIGHTS!</h1>
-        <form action="/" method="POST"></form>
         <tr>
-            <td class="button" name="led" value="colorWipe">XMAS color Wipe</td>
-            <td class="button" name="led" value="theaterChase">Theater Chase</td>
-        </tr> 
-        <tr>
-            <td class="button"></td>
-            <td class="button" name="led" value="rainbow">Rainbow</td>
+            <td onClick="SendColour('colorWipe')" class="button" >XMAS color Wipe</td>
+            <td onClick="SendColour('theaterChase')" class="button">Theater Chase</td>
         </tr>
         <tr>
-            <td class="button"></td>
-            <td class="button"></td>
+            <td onClick="SendColour('wheel')" class="button"></td>
+            <td onClick="SendColour('rainbow')" class="button">Rainbow</td>
         </tr>
         <tr>
-            <td  class="button"></td>
-            <td class="button"></td>
+            <td onClick="SendColour('rainbowCycle')" class="button"></td>
+            <td onClick="SendColour('theaterChaseRainbow')" class="button"></td>
         </tr>
         <tr>
-            <td  class="button"></td>
-            <td  class="button"></td>
+            <td onClick="SendColour('Pink')" class="button"></td>
+            <td onClick="SendColour('Yellow')" class="button"></td>
         </tr>
-        
+        <tr>
+            <td onClick="SendColour('Purple')" class="button"></td>
+            <td onClick="SendColour('Black')" class="button"></td>
         </tr>
         
-        <td class="button" name="led" value="OFF">Turn Lights Off</td>
-        </form>
+        </tr>
+
+        <td onClick="SendColour('OFF')" class="button" >Turn Lights OFF</td>
+        
     </table>
 <script>
 function SendColour(ClickedColour) { 
