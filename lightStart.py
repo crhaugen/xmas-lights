@@ -7,7 +7,7 @@ from flask import Flask, render_template, request
 from thread import start_new_thread
 
 app = Flask(__name__)
-CurrentColour = "White"
+currentColor = "White"
  
 # LED strip configuration:
 LED_COUNT = 300     # Number of LED pixels.
@@ -79,35 +79,35 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 
 def light():
-    global CurrentColour
+    global currentColor
     strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     strip.begin()
 
     if request.args.get('Color'):
-       CurrentColour=request.args.get('Color')
-    print('here', CurrentColour)
-    if CurrentColour == "colorWipe":
+       currentColor=request.args.get('Color')
+    print('here', currentColor)
+    if currentColor == "colorWipe":
        while request.args.get('Color') == 'colorWipe':
            print ('Color wipe animations.')
            colorWipe(strip, Color(255, 0, 0))  # Red wipe
            colorWipe(strip, Color(0, 255, 0))  # Blue wipe
            colorWipe(strip, Color(0, 0, 255))  # Green wipe
 
-    elif CurrentColour == "theaterChase":
+    elif currentColor == "theaterChase":
         while True:
             print ('Theater chase animations.')
             theaterChase(strip, Color(127, 127, 127))  # White theater chase
             theaterChase(strip, Color(127,   0,   0))  # Red theater chase
             theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 
-    elif CurrentColour == "rainbow":
+    elif currentColor == "rainbow":
         while True:
             print ('Rainbow animations.')
             rainbow(strip)
             rainbowCycle(strip)
             theaterChaseRainbow(strip)
 
-    elif CurrentColour == "OFF":
+    elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
     
     return render_template('homePage.html')
