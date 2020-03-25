@@ -113,7 +113,7 @@ def light():
 
 @app.route('/', methods=['GET'])
 def Main():
-    currentColor = 
+    currentColor = currentColor = "White"
     return render_template('homePage.html')
 
 
