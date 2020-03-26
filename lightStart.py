@@ -111,16 +111,17 @@ def light():
 
 
 
-@app.route('/', methods=['GET'])
 def Main():
-    global currentColor
-    print('main b', currentColor)
-    light()
-    print('main a', currentColor)
-    print('here re', request.args.get('Color'))
-    while currentColor == request.args.get('Color'):
-        light()
-    print('equal', currentColor, request.args.get('Color'))
+    if request.method == 'POST':
+        if 'colorWipe' in request.form:
+            print('colorWipe', currentColor)
+        elif 'theaterChase' in request.form:
+            print('theaterChase', currentColor)
+       
+    elif request.method == 'GET':
+        return render_template('homePage.html')
+
+   
     return render_template('homePage.html')
    
 if __name__ == "__main__":

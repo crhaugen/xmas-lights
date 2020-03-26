@@ -30,39 +30,9 @@ h1 {
     <table class="Colors" cellspacing="10" border="0">
         <h1>XMAS LIGHTS!</h1>
         <tr>
-            <td onClick="SendColor('colorWipe')" class="button" >XMAS color Wipe</td>
-            <td onClick="SendColor('theaterChase')" class="button">Theater Chase</td>
+            <input type="submit" name="colorWipe" value="colorWipe">
+            <input type="submit" name="theaterChase" value="theaterChase">
         </tr>
-        <tr>
-            <td onClick="SendColor('wheel')" class="button"></td>
-            <td onClick="SendColor('rainbow')" class="button">Rainbow</td>
-        </tr>
-        <tr>
-            <td onClick="SendColor('rainbowCycle')" class="button"></td>
-            <td onClick="SendColor('theaterChaseRainbow')" class="button"></td>
-        </tr>
-        <tr>
-            <td onClick="SendColor('Pink')" class="button"></td>
-            <td onClick="SendColor('Yellow')" class="button"></td>
-        </tr>
-        <tr>
-            <td onClick="SendColor('Purple')" class="button"></td>
-            <td onClick="SendColor('Black')" class="button"></td>
-        </tr>
-        
-        </tr>
-
-        <td onClick="SendColor('OFF')" class="button" >Turn Lights OFF</td>
-        
     </table>
-<script>
-function SendColor(ClickedColor) { 
-xhttp = new XMLHttpRequest();
-
-xhttp.open("GET", "?Color=" + ClickedColor, false);
-xhttp.send();
-
-}
-</script>
 </body>
 </html>
