@@ -5,10 +5,10 @@ from neopixel import *
 import argparse
 from flask import Flask, render_template, request
 from thread import start_new_thread
-import threading
+
 app = Flask(__name__)
 currentColor = "White"
- 
+newColor = "White"
 # LED strip configuration:
 LED_COUNT = 300     # Number of LED pixels.
 LED_PIN  = 18      # GPIO pin connected to the pixels (18 uses PWM!).
@@ -77,45 +77,51 @@ def theaterChaseRainbow(strip, wait_ms=50):
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i+q, 0)
 
-@app.before_first_request
+
 def light():
-    def run():
-        global currentColor
-        strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-        strip.begin()
+    global currentColor
+    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+    strip.begin()
+    print('li here', currentColor)
+    if request.args.get('Color'):
+       currentColor=request.args.get('Color')
+    print('here', currentColor)
+    if currentColor == "colorWipe":
+        print ('Color wipe animations.')
+        colorWipe(strip, Color(255, 0, 0))  # Red wipe
+        colorWipe(strip, Color(0, 255, 0))  # Blue wipe
+        colorWipe(strip, Color(0, 0, 255))  # Green wipe
 
-        while currentColor != "OFF":
-            while currentColor == 'colorWipe':
-                print ('Color wipe animations.')
-                colorWipe(strip, Color(255, 0, 0))  # Red wipe
-                colorWipe(strip, Color(0, 255, 0))  # Blue wipe
-                colorWipe(strip, Color(0, 0, 255))  # Green wipe
+    elif currentColor == "theaterChase":
+        print ('Theater chase animations.')
+        theaterChase(strip, Color(127, 127, 127))  # White theater chase
+        theaterChase(strip, Color(127,   0,   0))  # Red theater chase
+        theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 
-            while currentColor == "theaterChase":
-                print ('Theater chase animations.')
-                theaterChase(strip, Color(127, 127, 127))  # White theater chase
-                theaterChase(strip, Color(127,   0,   0))  # Red theater chase
-                theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
+    elif currentColor == "rainbow":
+        print ('Rainbow animations.')
+        rainbow(strip)
+        rainbowCycle(strip)
+        theaterChaseRainbow(strip)
 
-            while currentColor == "rainbow":
-                print ('Rainbow animations.')
-                rainbow(strip)
-                rainbowCycle(strip)
-                theaterChaseRainbow(strip)
-
-        
+    elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
-        
-    thread = thread.Thread(target=run)
-    thread.start()
+    
+    return render_template('homePage.html')
 
 
 
 @app.route('/', methods=['GET'])
 def Main():
-    currentColor = currentColor = ""
+    global currentColor
+    print('main b', currentColor)
+    light()
+    print('main a', currentColor)
+    print('here re', request.args.get('Color'))
+    while currentColor == request.args.get('Color'):
+        light()
+    print('equal', currentColor, request.args.get('Color'))
     return render_template('homePage.html')
-
-
+   
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host='0.0.0.0')
