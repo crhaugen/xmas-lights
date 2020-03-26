@@ -110,12 +110,18 @@ def light():
     return render_template('homePage.html')
 
 
-
+@app.route('/', methods=['GET', 'POST'])
 def Main():
+    global currentColor
+    print(request.method)
     if request.method == 'POST':
-        if 'colorWipe' in request.form:
+        while 'colorWipe' in request.form:
             print('colorWipe', currentColor)
-        elif 'theaterChase' in request.form:
+            currentColor = 'colorWipe'
+            light()
+        while 'theaterChase' in request.form:
+            currentColor = 'theaterChase'
+            light()
             print('theaterChase', currentColor)
        
     elif request.method == 'GET':
@@ -125,4 +131,4 @@ def Main():
     return render_template('homePage.html')
    
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', threaded=True)
