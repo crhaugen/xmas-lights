@@ -9,6 +9,8 @@ from thread import start_new_thread
 app = Flask(__name__)
 currentColor = "White"
 newColor = "White"
+strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+
 # LED strip configuration:
 LED_COUNT = 300     # Number of LED pixels.
 LED_PIN  = 18      # GPIO pin connected to the pixels (18 uses PWM!).
@@ -80,8 +82,9 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 def light():
     global currentColor
-    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+    global strip
     strip.begin()
+    colorWipe(strip, Color(0,0,0), 10)
     print('li here', currentColor)
     if request.args.get('Color'):
        currentColor=request.args.get('Color')
