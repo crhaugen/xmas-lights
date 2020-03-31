@@ -112,7 +112,7 @@ def light():
     
     return render_template('homePage.html')
 
-#runs when button is pressed
+#runs when button is pressed or not
 @app.route('/', methods=['GET', 'POST'])
 def Main():
     global currentColor
