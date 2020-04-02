@@ -9,8 +9,8 @@ from file import File
 app = Flask(__name__)
 currentColor = "White"
 newColor = "White"
-FILE_PATH = 'lightSetting.txt'
-strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+FILE_PATH = "lightSetting.txt"
+
 
 # LED strip configuration:
 LED_COUNT = 300     # Number of LED pixels.
@@ -20,7 +20,8 @@ LED_DMA = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
- 
+
+strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
  
  
 # Define functions which animate LEDs in various ways.
@@ -108,7 +109,7 @@ def light(currentColor):
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
     
-    return render_template('homePage.html')
+    
 
    
 if __name__ == "__main__":
@@ -118,7 +119,7 @@ if __name__ == "__main__":
         while True:
             file.checkIfUpdated()
 
-            light(file.updateData)
+            light(file.fileData)
 
     except:
         pass
