@@ -27,7 +27,7 @@ class File(object):
     def updateData(self):
 
         with open(self.filePath) as f:
-            data = f.readline()
+            self.fileData = f.readline()
 
 
 
