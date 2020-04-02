@@ -20,17 +20,15 @@ def updateFile(data):
 #runs when button is pressed or not
 @app.route('/', methods=['GET', 'POST'])
 def Main():
-    global currentColor
-    print(request.get_data(as_text=True))
+    
     if request.method == 'POST':
-        while 'colorWipe' in request.form:
-            print('colorWipe', currentColor)
-            currentColor = 'colorWipe'
-            light()
-        while 'theaterChase' in request.form:
-            currentColor = 'theaterChase'
-            light()
-            print('theaterChase', currentColor)
+
+        data = ''
+        for val in request.form:
+            data = val
+
+        updateFile(data)
+        
        
     elif request.method == 'GET':
         return render_template('homePage.html')
