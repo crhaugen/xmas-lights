@@ -5,10 +5,11 @@ from neopixel import *
 import argparse
 from flask import Flask, render_template, request
 from thread import start_new_thread
-
+from file import File
 app = Flask(__name__)
 currentColor = "White"
 newColor = "White"
+FILE_PATH = 'lightSetting.txt'
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 
 # LED strip configuration:
@@ -80,15 +81,12 @@ def theaterChaseRainbow(strip, wait_ms=50):
                 strip.setPixelColor(i+q, 0)
 
 
-def light():
-    global currentColor
+def light(currentColor):
     global strip
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
     print('li here', currentColor)
-    if request.args.get('Color'):
-       currentColor=request.args.get('Color')
-    print('here', currentColor)
+   
     if currentColor == "colorWipe":
         print ('Color wipe animations.')
         colorWipe(strip, Color(255, 0, 0))  # Red wipe
@@ -112,26 +110,15 @@ def light():
     
     return render_template('homePage.html')
 
-#runs when button is pressed or not
-@app.route('/', methods=['GET', 'POST'])
-def Main():
-    global currentColor
-    print(request.method)
-    if request.method == 'POST':
-        while 'colorWipe' in request.form:
-            print('colorWipe', currentColor)
-            currentColor = 'colorWipe'
-            light()
-        while 'theaterChase' in request.form:
-            currentColor = 'theaterChase'
-            light()
-            print('theaterChase', currentColor)
-       
-    elif request.method == 'GET':
-        return render_template('homePage.html')
-
-   
-    return render_template('homePage.html')
    
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', threaded=True)
+    file = File(FILE_PATH)
+
+    try:
+        while True:
+            file.checkIfUpdated()
+
+            light(file.updateData)
+
+    except:
+        pass
