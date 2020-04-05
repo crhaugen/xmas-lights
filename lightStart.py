@@ -115,6 +115,7 @@ def light(currentColor):
 if __name__ == "__main__":
     file = File(FILE_PATH)
 
+    #run forever
     try:
         while True:
             file.checkIfUpdated()
