@@ -86,7 +86,7 @@ def light(currentColor):
     global strip
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
-    print('li here', currentColor)
+    
    
     if currentColor == "colorWipe":
         print ('Color wipe animations.')
@@ -115,7 +115,7 @@ def light(currentColor):
 if __name__ == "__main__":
     file = File(FILE_PATH)
 
-    #run forever
+    #run forever 
     try:
         while True:
             file.checkIfUpdated()
