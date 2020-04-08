@@ -6,7 +6,8 @@ import argparse
 from flask import Flask, render_template, request
 from thread import start_new_thread
 from file import File
-app = Flask(__name__)
+
+
 currentColor = "White"
 newColor = "White"
 FILE_PATH = "lightSetting.txt"
@@ -20,7 +21,7 @@ LED_DMA = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
-
+ 
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
  
  
@@ -86,7 +87,7 @@ def light(currentColor):
     global strip
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
-    
+    print('li here', currentColor)
    
     if currentColor == "colorWipe":
         print ('Color wipe animations.')
@@ -108,19 +109,23 @@ def light(currentColor):
 
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
-    
+
+    else:
+        colorWipe(strip, Color(0,0,0), 10)
     
 
    
 if __name__ == "__main__":
     file = File(FILE_PATH)
 
-    #run forever 
     try:
         while True:
             file.checkIfUpdated()
+            print('f.fd', file.fileData)
+            if len(file.fileData) == 0:
+		light("OFF")
+            else:
+                light(file.fileData)
 
-            light(file.fileData)
-
-    except:
-        pass
+    except Exception as e:
+        raise e
