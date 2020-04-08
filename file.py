@@ -25,9 +25,10 @@ class File(object):
             pass
 
     def updateData(self):
-        #open txt file which holds current or new color patterns
+
         with open(self.filePath) as f:
             self.fileData = f.readline()
+	    print('data', fileData)
 
 
 
