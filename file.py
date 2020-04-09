@@ -1,5 +1,5 @@
 import os
-
+#file class for handling input
 class File(object):
 
     #path to file with data for lights
