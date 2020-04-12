@@ -6,7 +6,7 @@ from thread import start_new_thread
 import json
 
 app = Flask(__name__)
-FILE_PATH = 'lightSetting.txt'
+
 
 def updateFile(data):
 
