@@ -110,9 +110,6 @@ def light(currentColor):
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
 
-    else:
-        colorWipe(strip, Color(0,0,0), 10)
-    
 
    
 if __name__ == "__main__":
