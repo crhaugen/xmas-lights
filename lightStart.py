@@ -110,10 +110,10 @@ def light(currentColor):
     elif currentColor == "rainbowCycle":
         print ('rainbow cycle')
         rainbowCycle(strip)
-        
+
     elif currentColor == "wheel":
         print ('wheel.')
-        wheel(strip)
+        wheel(255)
 
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
