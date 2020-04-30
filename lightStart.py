@@ -123,7 +123,7 @@ if __name__ == "__main__":
             file.checkIfUpdated()
             print('f.fd', file.fileData)
             if len(file.fileData) == 0:
-		light("OFF")
+                light("OFF")
             else:
                 light(file.fileData)
 
