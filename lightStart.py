@@ -102,10 +102,18 @@ def light(currentColor):
         theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 
     elif currentColor == "rainbow":
-        print ('Rainbow animations.')
+        print ('Rainbow stuff.')
         rainbow(strip)
         rainbowCycle(strip)
         theaterChaseRainbow(strip)
+
+    elif currentColor == "rainbowCycle":
+        print ('rainbow cycle')
+        rainbowCycle(strip)
+        
+    elif currentColor == "wheel":
+        print ('wheel.')
+        wheel(strip)
 
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
