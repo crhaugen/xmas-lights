@@ -87,7 +87,6 @@ def light(currentColor):
     global strip
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
-    print('li here', currentColor)
    
     if currentColor == "colorWipe":
         print ('Color wipe animations.')
