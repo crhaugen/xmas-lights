@@ -1,9 +1,6 @@
 import time
-from neopixel import *
 import argparse
 from flask import Flask, render_template, request
-from thread import start_new_thread
-import json
 
 app = Flask(__name__)
 FILE_PATH = 'lightSetting.txt'

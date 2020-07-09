@@ -1,4 +1,5 @@
 import os
+print os.environ['PATH']
 #file class for handling input
 class File(object):
 
@@ -13,22 +14,26 @@ class File(object):
 
     def __init__(self, pathTofile):
         self.filePath = pathTofile
+        print("path", pathTofile)
 
     def checkIfUpdated(self):
         try:
+            print("here")
+            print("file", self.filePath)
             currTime = os.path.getmtime(self.filePath)
-
+            print("currTime", currTime)
             if currTime > self.timeLastUpdated:
+                print("updated")
                 self.updateData()
                 self.timeLastUpdated = currTime
-        except:
-            pass
+        except Exception as e:
+            print("exc", e)
 
     def updateData(self):
 
         with open(self.filePath) as f:
             self.fileData = f.readline()
-	    print('data', fileData)
+	    print('data', self.fileData)
 
 
 
