@@ -6,6 +6,15 @@
 	width: 100%; 
 }
 
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 h1 {
     color: #e74c3c;
 	font-size: 4rem;
@@ -15,9 +24,15 @@ h1 {
 	text-align: center;
 }
 
-.button {
-	padding: 25px 35px;
-	border-radius: 4px;
+input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 16px 32px;
+  border-radius: 4px;
+  margin: 4px 2px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 </style>
@@ -31,8 +46,14 @@ h1 {
         <h1>XMAS LIGHTS!</h1>
         <form method="post" action="/">
         <tr>
-            <input type="submit" name="colorWipe" value="colorWipe">
-            <input type="submit" name="theaterChase" value="theaterChase">
+            <div class="center">
+                <input type="submit" name="colorWipe" value="Color Wipe">
+                <input type="submit" name="theaterChase" value="Theater Chase">
+                <input type="submit" name="wheel" value="Rainbow Wheel">
+                <input type="submit" name="rainbow" value="Rainbow Stuff">
+                <input type="submit" name="rainbowCycle" value="Rainbow Cycle">
+                <input type="submit" name="OFF" value="OFF">
+            </div>
         </tr>
         </form>
     </table>

@@ -87,7 +87,6 @@ def light(currentColor):
     global strip
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
-    print('li here', currentColor)
    
     if currentColor == "colorWipe":
         print ('Color wipe animations.')
@@ -102,17 +101,22 @@ def light(currentColor):
         theaterChase(strip, Color(  0,   0, 127))  # Blue theater chase
 
     elif currentColor == "rainbow":
-        print ('Rainbow animations.')
+        print ('Rainbow stuff.')
         rainbow(strip)
         rainbowCycle(strip)
         theaterChaseRainbow(strip)
 
+    elif currentColor == "rainbowCycle":
+        print ('rainbow cycle')
+        rainbowCycle(strip)
+
+    elif currentColor == "wheel":
+        print ('wheel.')
+        wheel(255)
+
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
 
-    else:
-        colorWipe(strip, Color(0,0,0), 10)
-    
 
    
 if __name__ == "__main__":
@@ -123,7 +127,7 @@ if __name__ == "__main__":
             file.checkIfUpdated()
             print('f.fd', file.fileData)
             if len(file.fileData) == 0:
-		light("OFF")
+                light("OFF")
             else:
                 light(file.fileData)
 

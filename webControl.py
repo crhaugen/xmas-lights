@@ -1,9 +1,17 @@
 import time
+<<<<<<< HEAD
+import argparse
+from flask import Flask, render_template, request
+=======
+
 import argparse
 from flask import Flask, render_template, request
 
+>>>>>>> 1805a5942574ac13970cb6b3c098f04c7c7cde22
+
 app = Flask(__name__)
-FILE_PATH = 'lightSetting.txt'
+
+FILE_PATH = "lightSetting.txt"
 
 def updateFile(data):
 
