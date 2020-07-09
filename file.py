@@ -1,11 +1,19 @@
+"""
+Helper class for handling storing and updating the file
+
+.txt file contains current light mode, if file has been modified that 
+means new data is in the file (updated light mode)
+"""
+
+
 import os
-#file class for handling input
+
 class File(object):
 
     #path to file with data for lights
     filePath = " "
 
-    #to see if file has new data
+    #time file was last updated
     timeLastUpdated = 0
 
     #data found in file
@@ -14,6 +22,8 @@ class File(object):
     def __init__(self, pathTofile):
         self.filePath = pathTofile
 
+
+    # check if the file has been updated since last checked
     def checkIfUpdated(self):
         try:
             currTime = os.path.getmtime(self.filePath)
@@ -24,8 +34,8 @@ class File(object):
         except:
             pass
 
+    # if there has been a change to the file, update the variable with the data
     def updateData(self):
-
         with open(self.filePath) as f:
             self.fileData = f.readline()
 	    print('data', fileData)
