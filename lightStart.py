@@ -124,6 +124,7 @@ if __name__ == "__main__":
     file = File(FILE_PATH)
 
     try:
+        # check if file has a new light mode (update if so)
         while True:
             file.checkIfUpdated()
             print('f.fd', file.fileData)
