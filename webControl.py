@@ -15,7 +15,7 @@ def updateFile(data):
 
 
 
-#runs when button is pressed or not
+#sets up webpage and handle request from the site
 @app.route('/', methods=['GET', 'POST'])
 def Main():
     
