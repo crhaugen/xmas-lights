@@ -93,9 +93,9 @@ def light(currentColor):
    
     if currentColor == "colorWipeSeahawks":
         print ('colorWipeSeahawks.')
-        colorWipe(strip, Color(0, 33, 69))  #Oxford Blue
-        colorWipe(strip, Color(165, 172, 175))  # Metallic Silver
-        colorWipe(strip, Color(102, 192, 16))  # Kelly Green 
+        colorWipe(strip, Color(0, 21, 50))  # collage navy
+        colorWipe(strip, Color(105, 190, 40))  # action green
+        colorWipe(strip, Color(155, 161, 162))  # wolf grey
 
     elif currentColor == "colorWipe":
         print ('colorWipe.')
