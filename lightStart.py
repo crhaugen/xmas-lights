@@ -88,9 +88,11 @@ def light(currentColor):
     global strip
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
+
+    print("light", currentColor)
    
     if currentColor == "colorWipeSeahawks":
-        print ('Color wipe animations.')
+        print ('colorWipeSeahawks.')
         colorWipe(strip, Color(0, 33, 69))  #Oxford Blue
         colorWipe(strip, Color(165, 172, 175))  # Metallic Silver
         colorWipe(strip, Color(102, 192, 16))  # Kelly Green 
