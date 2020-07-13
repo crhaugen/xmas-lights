@@ -89,11 +89,17 @@ def light(currentColor):
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
    
-    if currentColor == "colorWipe":
+    if currentColor == "colorWipeSeahawks":
         print ('Color wipe animations.')
+        colorWipe(strip, Color(0, 33, 69))  #Oxford Blue
+        colorWipe(strip, Color(165, 172, 175))  # Metallic Silver
+        colorWipe(strip, Color(102, 192, 16))  # Kelly Green 
+
+    elif currentColor == "colorWipe":
         colorWipe(strip, Color(255, 0, 0))  # Red wipe
         colorWipe(strip, Color(0, 255, 0))  # Blue wipe
         colorWipe(strip, Color(0, 0, 255))  # Green wipe
+
 
     elif currentColor == "theaterChase":
         print ('Theater chase animations.')
@@ -110,10 +116,6 @@ def light(currentColor):
     elif currentColor == "rainbowCycle":
         print ('rainbow cycle')
         rainbowCycle(strip)
-
-    elif currentColor == "wheel":
-        print ('wheel.')
-        wheel(255)
 
     elif currentColor == "OFF":
         colorWipe(strip, Color(0,0,0), 10)
