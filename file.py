@@ -7,12 +7,7 @@ means new data is in the file (updated light mode)
 
 
 import os
-<<<<<<< HEAD
-
-=======
-print os.environ['PATH']
 #file class for handling input
->>>>>>> 764ee17625288ebeb8a075a88889de25930c1e18
 class File(object):
 
     #path to file with data for lights
