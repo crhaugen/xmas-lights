@@ -89,7 +89,7 @@ def light(currentColor):
     strip.begin()
     colorWipe(strip, Color(0,0,0), 10)
 
-    print("light", currentColor)
+    print('LIGHT!!!', currentColor)
    
     if currentColor == "colorWipeSeahawks":
         print ('colorWipeSeahawks.')
@@ -98,6 +98,7 @@ def light(currentColor):
         colorWipe(strip, Color(102, 192, 16))  # Kelly Green 
 
     elif currentColor == "colorWipe":
+        print ('colorWipe.')
         colorWipe(strip, Color(255, 0, 0))  # Red wipe
         colorWipe(strip, Color(0, 255, 0))  # Blue wipe
         colorWipe(strip, Color(0, 0, 255))  # Green wipe
@@ -133,8 +134,10 @@ if __name__ == "__main__":
             file.checkIfUpdated()
             print('f.fd', file.fileData)
             if len(file.fileData) == 0:
+                print('off')
                 light("OFF")
             else:
+                print('on')
                 light(file.fileData)
 
     except Exception as e:
