@@ -96,7 +96,7 @@ def light(currentColor):
         colorWipe(strip, Color(34, 0, 68))  # collage navy
         colorWipe(strip, Color(190, 105, 40))  # action green
         colorWipe(strip, Color(172, 165, 175))  # wolf grey
-
+ 
     elif currentColor == "colorWipe":
         print ('colorWipe.')
         colorWipe(strip, Color(255, 0, 0))  # Green wipe
