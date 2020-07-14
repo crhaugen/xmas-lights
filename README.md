@@ -1,6 +1,6 @@
 # xmas-lights
 
-Web controlled lights! 
+Internet controlled lights! 
 
 Using a Raspberry Pi and Python to control a LED NeoPixel strip.  
 
