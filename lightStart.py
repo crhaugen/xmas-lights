@@ -83,7 +83,7 @@ def theaterChaseRainbow(strip, wait_ms=50):
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i+q, 0)
 
-
+# the coloring for these lights is GRB!!
 def light(currentColor):
     global strip
     strip.begin()
@@ -93,15 +93,15 @@ def light(currentColor):
    
     if currentColor == "colorWipeSeahawks":
         print ('colorWipeSeahawks.')
-        colorWipe(strip, Color(0, 21, 50))  # collage navy
-        colorWipe(strip, Color(105, 190, 40))  # action green
-        colorWipe(strip, Color(155, 161, 162))  # wolf grey
+        colorWipe(strip, Color(21, 0, 50))  # collage navy
+        colorWipe(strip, Color(190, 105, 40))  # action green
+        colorWipe(strip, Color(161, 155, 162))  # wolf grey
 
     elif currentColor == "colorWipe":
         print ('colorWipe.')
-        colorWipe(strip, Color(255, 0, 0))  # Red wipe
-        colorWipe(strip, Color(0, 255, 0))  # Blue wipe
-        colorWipe(strip, Color(0, 0, 255))  # Green wipe
+        colorWipe(strip, Color(255, 0, 0))  # Green wipe
+        colorWipe(strip, Color(0, 255, 0))  # Red wipe
+        colorWipe(strip, Color(0, 0, 255))  # Blue wipe
 
 
     elif currentColor == "theaterChase":
