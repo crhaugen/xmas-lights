@@ -13,7 +13,7 @@ The first program creates a server using Flask that displays a simple static web
 **Webpage with buttons to controll the lights**
 ![Alt Text](https://github.com/crhaugen/xmas-lights/blob/Pictures/xmaslights.JPG)
 
-The second program is controlling the light settings (using neo-pixel library [Link](https://github.com/adafruit/Adafruit_NeoPixel)) and checking if a new reqeust came from the webpage.
+The second program is controlling the light settings (using neo-pixel library [Link](https://github.com/adafruit/Adafruit_NeoPixel)) and checking if a new request came from the webpage.
 
 Both programs are being run on a Raspberry Pi.
 
