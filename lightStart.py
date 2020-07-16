@@ -84,6 +84,7 @@ def theaterChaseRainbow(strip, wait_ms=50):
                 strip.setPixelColor(i+q, 0)
 
 # the coloring for these lights is GRB!!
+# calls functions depending on light mode selected
 def light(currentColor):
     global strip
     strip.begin()
