@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# .txt file contain the mode lights are currently set to 
 FILE_PATH = "lightSetting.txt"
 
 def updateFile(data):
@@ -11,8 +12,6 @@ def updateFile(data):
     with open(FILE_PATH, 'w') as f:
         f.write(data)
         f.close()
-
-
 
 
 #sets up webpage and handle request from the site
