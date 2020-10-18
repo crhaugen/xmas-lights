@@ -21,7 +21,6 @@ class File(object):
 
     def __init__(self, pathTofile):
         self.filePath = pathTofile
-        print("path", pathTofile)
 
 
     # check if the file has been updated since last checked
