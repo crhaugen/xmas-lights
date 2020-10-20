@@ -41,7 +41,3 @@ class File(object):
     def updateData(self):
         with open(self.filePath) as f:
             self.fileData = f.readline()
-	    print('data', self.fileData)
-
-
-
