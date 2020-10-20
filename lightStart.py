@@ -4,7 +4,7 @@ import time
 #from rpi_ws281x import *
 import argparse
 from flask import Flask, render_template, request
-from thread import start_new_thread
+
 from file import File
 
 import board
