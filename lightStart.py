@@ -75,7 +75,7 @@ def light(currentColor):
         pixels.show()
         time.sleep(1)
  
-        rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
+        rainbowCycle(0.001)  # rainbow cycle with 1ms delay per step
 
 
 if __name__ == "__main__":
