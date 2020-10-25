@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 
 import time
-#from rpi_ws281x import *
 import argparse
 from flask import Flask, render_template, request
-
-from file import File
-
 import board
 import neopixel
 
+from file import File
+
+
 pixel_pin = board.D18
 num_pixels = 300
-ORDER = neopixel.GRB
+ORDER = neopixel.RGB # coloring for my lights are RGB
 
 FILE_PATH = "lightSetting.txt"
 
@@ -48,34 +47,35 @@ def rainbowCycle(wait):
         pixels.show()
         time.sleep(wait)
 
-# the coloring for these lights is GRB!!
+def colorWipe(color):
+    for i in range(num_pixels):
+        pixels[i] = color
+        time.sleep(50/1000.0)
+
+# the coloring for these lights is RGB
 # calls functions depending on light mode selected
 def light(currentColor):
 
     if currentColor == "rainbowCycle":
         print ('rainbowCycle.')
-        # Comment this line out if you have RGBW/GRBW NeoPixels
-        pixels.fill((255, 0, 0))
-        # Uncomment this line if you have RGBW/GRBW NeoPixels
-        # pixels.fill((255, 0, 0, 0))
+        rainbowCycle(0.001)
+
+    elif currentColor == "halloweenWipe":
+        print('halloween')
+        orange = (255, 165, 0)
+        purple = (128, 0, 128)
+        limegreen = (50, 205, 50)
+
+        colorWipe(orange)
+        colorWipe(purple)
+        colorWipe(limegreen)
+
+    elif currentColor == 'OFF':
+        print('off')
+        pixels.fill((0, 0, 0))
         pixels.show()
-        time.sleep(1)
-    
-        # Comment this line out if you have RGBW/GRBW NeoPixels
-        pixels.fill((0, 255, 0))
-        # Uncomment this line if you have RGBW/GRBW NeoPixels
-        # pixels.fill((0, 255, 0, 0))
-        pixels.show()
-        time.sleep(1)
-    
-        # Comment this line out if you have RGBW/GRBW NeoPixels
-        pixels.fill((0, 0, 255))
-        # Uncomment this line if you have RGBW/GRBW NeoPixels
-        # pixels.fill((0, 0, 255, 0))
-        pixels.show()
-        time.sleep(1)
- 
-        #rainbowCycle(0.001)  # rainbow cycle with 1ms delay per step
+
+    time.sleep(1)
 
 
 if __name__ == "__main__":
